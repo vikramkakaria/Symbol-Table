@@ -13,8 +13,8 @@ of bindings, each of which are comprised of a key
 and a value. */
 typedef struct SymTable *SymTable_T;
 
-/* Returns a new SymTable object without bindings, or, if not enough memory
-is available, return NULL. */
+/* Returns a new SymTable object without bindings, or, if not enough 
+memory is available, return NULL. */
 SymTable_T SymTable_new(void);
 
 /* Frees the memory that oSymTable occupies (if NULL, does nothing). */
@@ -24,9 +24,9 @@ void SymTable_free(SymTable_T oSymTable);
 size_t SymTable_getLength(SymTable_T oSymTable);
 
 /* If there does not exist a binding in oSymTable whose key is pcKey, 
-return 1 (for true) and add new binding with key pcKey and value pvValue. 
-If not, or if there is not enough memory available, return 0 (for false) 
-and do not change oSymTable. */
+return 1 (for true) and add new binding with key pcKey and value 
+pvValue. If not, or if there is not enough memory available, return 0 
+(for false) and do not change oSymTable. */
 int SymTable_put(SymTable_T oSymTable,
      const char *pcKey, const void *pvValue);
 

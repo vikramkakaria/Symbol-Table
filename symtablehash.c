@@ -12,7 +12,7 @@ from  primeBuckCounts[0] to primeBuckCounts[1] to the last
 index of the array. These can be seen as a form of boundaries, 
 which are handled by the SymTable_expand(SymTable_T oSymTable) 
 function. */
-const size_t primeBuckCounts[] = {
+static const size_t primeBuckCounts[] = {
     509, 1021, 2039, 4093, 8191, 16381, 32749, 65521
     };
 
@@ -120,9 +120,10 @@ size_t SymTable_getLength(SymTable_T oSymTable){
 }
 
 /* This function seeks to expand oSymTable by increasing the number 
-of buckets present. If not enough memory is available, then the table is unchanged. 
-If, however, enough memory is available for expansion, then it is expanded. */
-void SymTable_expand(SymTable_T oSymTable){
+of buckets present. If not enough memory is available, then the table 
+is unchanged. If, however, enough memory is available for expansion, 
+then it is expanded. */
+static void SymTable_expand(SymTable_T oSymTable){
     size_t newNumBuckets;
     size_t bucket;
     size_t newBucket;
@@ -194,8 +195,8 @@ int SymTable_put(SymTable_T oSymTable,
         bucket = SymTable_hash(pcKey, oSymTable->numBuckets);
 
         /* Non-expansion */
-        for(thisBinding = oSymTable->buckets[bucket]; thisBinding != NULL; 
-        thisBinding = thisBinding->next){
+        for(thisBinding = oSymTable->buckets[bucket];
+        thisBinding != NULL; thisBinding = thisBinding->next){
             if(strcmp(pcKey, thisBinding->key)==0){
                 return 0;
             }                    

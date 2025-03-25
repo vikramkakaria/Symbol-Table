@@ -83,8 +83,8 @@ int SymTable_put(SymTable_T oSymTable,
         assert(pcKey!=NULL);
         
         /* Go through all return 0 cases, since nothing is changed. */
-        for(thisBinding = oSymTable->firstBinding; thisBinding != NULL; 
-        thisBinding = thisBinding->next){
+        for(thisBinding = oSymTable->firstBinding;
+        thisBinding != NULL; thisBinding = thisBinding->next){
             if(strcmp(pcKey, thisBinding->key)==0){
                 return 0;
             }                    
